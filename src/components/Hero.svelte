@@ -1,17 +1,17 @@
 <script>
   let bgImage =
     "https://cdn.shopify.com/s/files/1/1132/3434/files/BedrockSandals_MT20_Bydlon_072520-1040449_1_1600x.jpg?v=1614191359";
-  let color = "hotpink";
+  import Button from "./Button.svelte";
 </script>
 
 <div style="background-image: url('{bgImage}')">
-  <div>
+  <div class="transbox">
     <h1>
       Sustainable footwear for everyone, enjoy nature with comfortable footwear
       made from recycled materials.
     </h1>
-    <button on:click={() => alert("")}> Shop now </button>
   </div>
+  <Button on:click={() => alert("")}>Shop now</Button>
 </div>
 
 <style>
@@ -23,7 +23,17 @@
     justify-content: center;
     align-items: center;
   }
-  
+
+  div.transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid #689c54;
+    opacity: 0.6;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+  }
+
   @font-face {
     font-family: "Gelasio";
     font-style: normal;
@@ -41,13 +51,6 @@
     margin-left: auto;
     margin-right: auto;
     width: 8em;
-    color:  #689c54;
-  }
-  button {
-    color: #fff;
-    background-color: #689c54;
-    border-radius: 5px;
-    padding: 8px;
-    border: none;
+    color: #689c54;
   }
 </style>
