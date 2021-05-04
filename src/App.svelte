@@ -1,9 +1,14 @@
 <script>
   import Header from "./components/Header.svelte";
+  import Footer from "./components/Footer.svelte";
 </script>
 
 <Header />
-<h1 class="heading">Humanitera</h1>
+<main>
+  <h1 class="heading">Humanitera</h1>
+</main>
+
+<Footer />
 
 <style>
   .heading {
