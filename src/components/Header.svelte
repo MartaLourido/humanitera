@@ -10,7 +10,7 @@
   nav {
     box-sizing: border-box;
     background: #83b271;
-    padding: 10px 15px;
+    padding: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
