@@ -20,7 +20,7 @@ export const PRODUCTS = [
 		name: 'The mountain sandals',
 		price: 1200,
 		size: '38',
-		description: 'For the warmest summer, for a cool adventure in the mountains without forgetting our sustainable values, these sandals will keep you cool and of course, they are made with 90% recycled material!',
+		description: 'These sandals will keep you cool and of course, they are made with 90% recycled material!',
 		image: 'https://www.nomadicstateofmind.es/wp-content/uploads/2020/11/nomadic-state-of-mind-sandalias-mountain-momma-olive-02.jpg'
 	}
 ]

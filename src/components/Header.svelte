@@ -4,6 +4,7 @@
 
 <nav>
   <img class="logo" {src} alt="humanitera logo" />
+  
 </nav>
 
 <style>
