@@ -27,7 +27,7 @@
   div.transbox {
     margin: 30px;
     background-color: #ffffff;
-    border: 1px solid #689c54;
+    border: 1px solid black;
     opacity: 0.6;
     margin-left: auto;
     margin-right: auto;

@@ -1,10 +1,11 @@
 <script>
   export let src = "https://www.linkpicture.com/q/logo_219.png";
+
+  
 </script>
 
 <nav>
   <img class="logo" {src} alt="humanitera logo" />
-  
 </nav>
 
 <style>
