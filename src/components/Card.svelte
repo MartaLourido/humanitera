@@ -2,56 +2,53 @@
   export let productTitle;
   export let productPrice;
   export let productImage;
- 
 </script>
 
-<div class="card">
-  <img class="product-image" src={productImage} alt="Product" />
-  <h1>{productTitle}</h1>
-  <slot name="description">
-  </slot>
-  <p class="price">
-    SEK
-    <span>{productPrice}</span>
-  </p>
-  <p>
-    <button class="myButton">Add to Cart</button>
-  </p>
-</div>
+<section class="card-list">
+  <article class="card">
+    <img class="product-image" src={productImage} alt="Product" />
+    <h1>{productTitle}</h1>
+    <slot name="description" />
+    <p class="price">
+      SEK
+      <span>{productPrice}</span>
+    </p>
+    <p>
+      <button class="myButton">Add to Cart</button>
+    </p>
+  </article>
+</section>
 
 <style>
+
+
   .card {
-    font-family: "Gelasio";
-    text-align: center;
     box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2);
-    float: left;
-    height: 30rem;
-    width: 25%;
-    padding: 0 1rem;
-    margin: 1.5rem;
+    font-family: "Gelasio";
+    background: white;
+    border-radius: 1em;
+    padding: 2.3em;
+    text-align: center;
   }
   .price {
-    color: white;
+    color: black;
     font-size: 20px;
   }
   .product-image {
-    width: 100%;
+    width: 80%;
     height: 50%;
   }
-
   .myButton {
-    background-color: transparent;
-    border-radius: 28px;
-    border: 1px solid white;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 17px;
-    height: 50%;
-    width: 100%;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px black;
+    min-width: 70px;
+    max-width: 200px;
+    margin: 1em;
+    padding: 1em 2em;
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: #83b271;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
   }
   .myButton:hover {
     background-color: transparent;
@@ -59,5 +56,10 @@
   .myButton:active {
     position: relative;
     top: 1px;
+  }
+  .card-list {
+    margin: 4;
+    padding: 4;
+
   }
 </style>
