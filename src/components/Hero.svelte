@@ -1,56 +1,58 @@
 <script>
-  let bgImage =
-    "https://cdn.shopify.com/s/files/1/1132/3434/files/BedrockSandals_MT20_Bydlon_072520-1040449_1_1600x.jpg?v=1614191359";
-  import Button from "./Button.svelte";
-</script>
+    let bgImage =
+      "https://cdn.shopify.com/s/files/1/1132/3434/files/BedrockSandals_MT20_Bydlon_072520-1040449_1_1600x.jpg?v=1614191359";
+    import Button from "./Button.svelte";
+  </script>
 
 <div style="background-image: url('{bgImage}')">
-  <div class="transbox">
-    <h1>
-      Sustainable footwear for everyone, enjoy nature with comfortable footwear
-      made from recycled materials.
-    </h1>
-  </div>
-  <Button on:click={() => alert("")}>Shop now</Button>
+    <div class="transbox">
+      <h1>
+        Sustainable footwear for everyone, enjoy nature with comfortable footwear
+        made from recycled materials.
+      </h1>
+    </div>
+    <Button>
+    <a href="#the-products">Shop  <em>now</em>
+   </Button>
 </div>
 
-<style>
-  div {
-    width: 100%;
-    height: 800px;
-    background-size: cover;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-  }
 
-  div.transbox {
-    margin: 30px;
-    background-color: #ffffff;
-    border: 1px solid black;
-    opacity: 0.6;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-  }
 
-  @font-face {
-    font-family: "Gelasio";
-    font-style: normal;
-    font-weight: 400;
-    src: local("Gelasio Regular"), local("Gelasio-Regular"),
-      url(https://fonts.gstatic.com/s/gelasio/v1/cIf9MaFfvUQxTTqS9C6hYQ.woff2)
-        format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
-  }
-
-  h1 {
-    font-family: Gelasio;
-    margin-left: auto;
-    margin-right: auto;
-    width: 8em;
-    color: #689c54;
-  }
-</style>
+  
+  <style>
+    div {
+      width: 100%;
+      height: 800px;
+      background-size: cover;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+    div.transbox {
+      margin: 30px;
+      background-color: #ffffff;
+      border: 1px solid black;
+      opacity: 0.6;
+      margin-left: auto;
+      margin-right: auto;
+      height: auto;
+    }
+    @font-face {
+      font-family: "Gelasio";
+      font-style: normal;
+      font-weight: 400;
+      src: local("Gelasio Regular"), local("Gelasio-Regular"),
+        url(https://fonts.gstatic.com/s/gelasio/v1/cIf9MaFfvUQxTTqS9C6hYQ.woff2)
+          format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+        U+2215, U+FEFF, U+FFFD;
+    }
+    h1 {
+      font-family: Gelasio;
+      margin-left: auto;
+      margin-right: auto;
+      width: 8em;
+      color: #689c54;
+    }
+  </style>

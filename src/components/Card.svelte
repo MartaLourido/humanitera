@@ -2,6 +2,7 @@
   export let productTitle;
   export let productPrice;
   export let productImage;
+  export let productSize;
 </script>
 
 <section class="card-list">
@@ -9,6 +10,10 @@
     <img class="product-image" src={productImage} alt="Product" />
     <h1>{productTitle}</h1>
     <slot name="description" />
+    <p class="price">
+        Size: 
+        <span>{productSize}</span>
+      </p>
     <p class="price">
       SEK
       <span>{productPrice}</span>
@@ -20,8 +25,6 @@
 </section>
 
 <style>
-
-
   .card {
     box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2);
     font-family: "Gelasio";
@@ -51,7 +54,9 @@
     letter-spacing: 1px;
   }
   .myButton:hover {
-    background-color: transparent;
+    cursor: pointer;
+    color: greenyellow;
+    border-color: greenyellow;
   }
   .myButton:active {
     position: relative;
@@ -60,6 +65,11 @@
   .card-list {
     margin: 4;
     padding: 4;
-
+  }
+  
+  h1{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1.5em;
+    letter-spacing: 1px;
   }
 </style>
