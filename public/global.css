@@ -62,8 +62,8 @@ button:focus {
 	border-color: #666;
 }
 
-@media (min-width: 640px) {
-	main {
-		max-width: none;
-	}
-}
+ @media (min-width: 640px) {
+        main {
+            max-width: none;
+        }
+    }
