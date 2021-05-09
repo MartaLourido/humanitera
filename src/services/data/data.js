@@ -25,6 +25,6 @@ export const PRODUCTS = [
 	}
 ]
 
-export const COUPONS = [
-	{ code: 'FIRSTIMESHOPPER', discountType: 'DOLLAR', value: 10 }
+export const VALID_COUPONS  = [
+	{ code: 'FIRSTIME', discountType: 'SEK', value: 500 }
 ]
