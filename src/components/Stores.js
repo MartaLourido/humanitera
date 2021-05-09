@@ -133,7 +133,7 @@ export const costStore = derived(cartStore, ($cart) => {
       let discount = 0;
 
       switch (coupon.discountType) {
-        case "DOLLAR":
+        case "SEK":
           discount = coupon.value;
           break;
         case "PERCENT_OFF":
