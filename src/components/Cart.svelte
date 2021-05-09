@@ -52,15 +52,15 @@
   {#if show}
     {#if $cartStore.items.length}
       {#each $cartStore.items as item (item.id)}
+	  <div class="Cart">
         <div class="image">
           <img class="item-1.png" src={item.image} alt="Product" />
         </div>
         <div class="content-product">
           <span class="product-name"><strong>{item.name}</strong></span>
-          <span class="product-price">{item.price}€</span>
+          <span class="product-name"><strong>Size {item.size}</strong></span>
+          <span class="product-price">{item.price} SEK</span>
           <span class="separator-top" />
-          <slot name="description" />
-          {item.description}
 
           <div class="count">
             <button class="add" on:click={countButtonHandler}>+</button>
@@ -77,18 +77,19 @@
           </div>
           <small style="display: block;"
             >(x{$cartStore.quantities[item.id]}) -
-            <strong>${$cartStore.quantities[item.id] * item.price}</strong
+            <strong>SEK{$cartStore.quantities[item.id] * item.price}</strong
             ></small
           >
         </div>
+	</div>
       {/each}
       <hr />
       <div>
         <div class="cart__subtotal">
-          <span>Sub-Total</span><strong>${$costStore.subTotal}</strong>
+          <span>Sub-Total</span><strong>SEK{$costStore.subTotal}</strong>
         </div>
         <div class="cart__discounts">
-          <span>Discount</span><strong>-${$costStore.discountAmount}</strong>
+          <span>Discount</span><strong>-SEK{$costStore.discountAmount}</strong>
         </div>
         {#if $cartStore.coupons.length}
           <ul class="cart__coupons-list">
@@ -114,15 +115,29 @@
         </div>
         <hr />
         <div class="cart__total">
-          <span>Total</span><strong>${$costStore.total}</strong>
+          <span>Total</span><strong>SEK{$costStore.total}</strong>
         </div>
       </div>
+	  <hr />
+	  <div class="btn-left">
+	  <button on:click={() => modal.hide()}>Checkout</button>
+	</div>
+      <div class="btn-group">
+        <Button on:click={() => modal.hide()}>Continue Shopping</button>
+	</div>
+
     {:else}
-      <p class="empty-cart-msg">Cart is empty.</p>
+      <div class="CartList">
+        <h3>Shopping cart is empty!</h3>
+      </div>
+	  <div class="btn-group">
+		<button on:click={() => modal.hide()}>Continue Shopping</button>
+	  </div>
+
     {/if}
   {/if}
 
-  <Button on:click={() => modal.hide()}>Checkout</Button>
+
 </Modal>
 
 <!-- <button class="myButton" on:click={toggleDropdown}>Cart ({$cartStore.totalItems})</button> -->
@@ -143,14 +158,9 @@
   }
 
   .content-product .product-price {
-    color: #b12704;
+    color: #a1a1a1;
     font-size: 17px;
     font-weight: 800;
-  }
-
-  .empty-cart-msg {
-    margin: 0;
-    color: grey;
   }
 
   .cart__subtotal,
@@ -160,6 +170,21 @@
     justify-content: space-between;
     margin-bottom: 0.25rem;
   }
+
+  .Cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  h3 {
+    margin-top: 0.2em;
+    margin-bottom: 2em;
+  }
+
 
   .cart__coupon {
     display: flex;
@@ -234,6 +259,42 @@
   button > *:active,
   button > *:focus {
     outline: none;
+  }
+
+  .btn-group button {
+    background-color: #04aa6d; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: right; /* Float the buttons side by side */
+
+  }
+
+  .btn-left button {
+    background-color: #04aa6d; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+
+  }
+
+  .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: #3e8e41;
   }
 
   @media screen and (max-width: 1048px) {
