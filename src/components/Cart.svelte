@@ -6,7 +6,6 @@
   import Counter from "./Counter.svelte";
   let modal;
 
-
   let shown = false;
   export function show() {
     shown = true;
@@ -32,9 +31,6 @@
   const unapplyCoupon = (coupon) => {
     cartStore.removeCoupon(coupon);
   };
-
-
-
 </script>
 
 <Button on:click={() => modal.show()}
@@ -42,273 +38,487 @@
 >
 
 <Modal bind:this={modal}>
-  <div class="Container">
+  <header class="container">
     <h2>Your Shopping Cart</h2>
-  </div>
+  </header>
   {#if show}
     {#if $cartStore.items.length}
       {#each $cartStore.items as item (item.id)}
-	  <div class="btn-left">
-		<p>product</p>
-	  </div>
-	  <div class='container'>
-		
-			  <img class="item-1.png" src={item.image} alt="Product" />
-			<div class="btn-group">
-			  <span class="product-name"><strong>{item.name}</strong></span>
-			  <span class="product-name"><strong>Size {item.size}</strong></span>
-			 
-			  <span class="right">Price {item.price} SEK </span>
-		<span class="separator-top" />
-		<button class="remove" on:click={removeToCart(item)}>
-			<object
-			  aria-label="remove"
-			  type="image/svg+xml"
-			  data="img/svg/cancel.svg"
-			/>
-			Remove
-		  </button>
-	</div>
-	
-	 
-          <span class="product-price">{item.price} SEK</span>
-         
-		  <Counter bind:count={item.count} />
-          <!-- <div class="count">
+        <header class="container">
+          <ul class="breadcrumb">
+            <li>Product</li>
+            <li>Quantity Cart</li>
+            <li>Price</li>
+            <span class="count">({$cartStore.totalItems})items in the bag</span>
+          </ul>
+        </header>
+
+        <section class="container">
+          <ul class="products">
+            <li class="row">
+              <div class="col left">
+                <div class="thumbnail">
+                  <img class="item-1.png" src={item.image} alt="Product" />
+                </div>
+                <div class="detail">
+                  <div class="name">
+                    <span class="product-name">{item.name}</span>
+                  </div>
+                  <div class="description">Size {item.size}</div>
+                  <div class="description">
+                    <div class="price">
+                      Price <small style="display: block;"
+                        >(x{$cartStore.quantities[item.id]}) -
+                        <strong
+                          >SEK {$cartStore.quantities[item.id] *
+                            item.price}</strong
+                        ></small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- <span class="separator-top" /> -->
+                <div class="col right">
+                  <div class="quantity">
+                    <input
+                      type="text"
+                      class="quantity"
+                      step="1"
+                      value={item.quantity}
+                    />
+                  </div>
+                  <div class="remove">
+                    <button class="remove" on:click={removeToCart(item)}>
+                      <object
+                        aria-label="remove"
+                        type="image/svg+xml"
+                        data="img/svg/cancel.svg"
+                      />
+                      X
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- <span class="product-price">{item.price} SEK</span> -->
+
+        <!-- <Counter bind:count={item.count} /> -->
+        <!-- <div class="count">
             <button class="add" on:click={countButtonHandler}>+</button>
             <p>{item.count}</p>
 			<InputQuantity
 			{quantity}
 			on:addQuantity={addQuantity}
 			on:removeQuantity={removeQuantity} /> -->
-         
-
-          <small style="display: block;"
-            >(x{$cartStore.quantities[item.id]}) -
-            <strong>SEK{$cartStore.quantities[item.id] * item.price}</strong
-            ></small
-          >
-        </div>
-
       {/each}
       <hr />
-      <div>
-        <div class="cart__subtotal">
-          <span>Sub-Total</span><strong>SEK{$costStore.subTotal}</strong>
-        </div>
-        <div class="cart__discounts">
-          <span>Discount</span><strong>-SEK{$costStore.discountAmount}</strong>
-        </div>
+
+      <div class="container">
+        <span>Sub-Total</span><strong>SEK{$costStore.subTotal}</strong>
+
+        <p>Have A Promo Code??</p>
+        <span>Discount</span><strong>-SEK{$costStore.discountAmount}</strong>
+
         {#if $cartStore.coupons.length}
           <ul class="cart__coupons-list">
             {#each $cartStore.coupons as coupon (coupon.code)}
               <li class="cart__coupons-list__item">
                 <span>{coupon.code}</span>
-                <Button type="Button" on:click={unapplyCoupon(coupon)}>x</Button
+
+                <button type="button" on:click={unapplyCoupon(coupon)}>x</button
                 >
               </li>
             {/each}
           </ul>
         {/if}
 
-          <input
-            class="cart__coupon__input"
-            type="text"
-            placeholder="Coupon"
-            bind:this={couponInput}
-          />
-          <button class="cart__coupon__btn" type="button" on:click={applyCoupon}
-            >Apply</button
-          >
+        <input type="text" bind:this={couponInput} />
+        <button type="button" on:click={applyCoupon}>Apply</button>
 
         <hr />
         <div class="cart__total">
           <span>Total</span><strong>SEK{$costStore.total}</strong>
         </div>
-      </div>
-	  <hr />
-	  <div class="btn-left">
-	  <button on:click={() => modal.hide()}>Checkout</button>
-	</div>
-      <div class="btn-group">
-        <button on:click={() => modal.hide()}>Continue Shopping</button>
-	</div>
 
+        <div class="checkout">
+          <button type="button">Check Out</button>
+        </div>
+      </div>
+
+      <hr />
+      <div class="btn-left">
+        <button on:click={() => modal.hide()}>Continue Shopping</button>
+      </div>
+      <div class="btn-group">
+        <button on:click={() => modal.hide()}>Checkout</button>
+      </div>
     {:else}
       <div class="CartList">
         <h3>Shopping cart is empty!</h3>
       </div>
-	  <div class="btn-group">
-		<button on:click={() => modal.hide()}>Continue Shopping</button>
-	  </div>
-
+      <div class="btn-group">
+        <button on:click={() => modal.hide()}>Continue Shopping</button>
+      </div>
     {/if}
   {/if}
-
-
 </Modal>
 
 <!-- <button class="myButton" on:click={toggleDropdown}>Cart ({$cartStore.totalItems})</button> -->
 <style>
+  * {
+    box-sizing: border-box;
+  }
 
-.container {
-   text-align:center;
-} 
- button {
-     display:inline-block;
-}
+  html {
+    font-size: 12px;
+  }
 
-
-
-    li {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-items: center;
-        align-items: center;
-        border-bottom: .1em solid #cacaca;
-        padding: .8em 0;
-    }
-    h4 {
-        text-align: center;
-        width: 100%;
-    }
-    span {
-        width: 100%;
-        text-align: right;
-        font-size: .95em;
-    }
+  body {
+    margin: 20px 0;
+    padding: 0;
+    font-family: arial, sans-serif;
+    overflow: scroll;
+  }
 
   img {
-    width: 80px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    padding: 0.5em;
-	float: left;
+    max-width: 100%;
+    vertical-align: middle;
+    border-radius: 4px;
   }
 
-  .content-product {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-left: 2em;
+  a {
+    text-decoration: none;
+    color: #333333;
   }
 
-  .content-product .product-price {
-    color: #a1a1a1;
-    font-size: 17px;
-    font-weight: 800;
+  a:hover {
+    color: #f58551;
   }
 
-  .cart__subtotal,
-  .cart__discounts,
-  .cart__total {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.25rem;
+  button {
+    background-color: #16cc9b;
+    border: 2px solid #16cc9b;
+    color: #ffffff;
+    transition: all 0.25s linear;
+    cursor: pointer;
   }
 
-  .Cart {
-	display: grid;
-    grid-template-columns: 1fr;
-    gap: 1em;
-    max-height: 500px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 100%;
+  button::after {
+    position: relative;
+    right: 0;
+    content: " \276f";
+    transition: all 0.15s linear;
   }
 
-  h3 {
-    margin-top: 0.2em;
-    margin-bottom: 2em;
+  button:hover {
+    background-color: #f58551;
+    border-color: #f58551;
   }
 
-
-  .cart__coupon {
-    display: flex;
-    justify-content: flex-end;
+  button:hover::after {
+    right: -5px;
   }
 
-  .cart__coupons-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 0.25rem;
-  }
-
-  .cart__coupons-list__item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  .cart__coupons-list__item:not(:last-child) {
-    margin-bottom: 0.25rem;
-  }
-
-  .count {
-    display: flex;
-    margin-top: 10px;
-  }
-
-  .count > * {
-    display: block;
-    margin: 0;
-    font-size: 0.8em;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  .count button.add {
-    padding: 0.2em 0.4em;
-    border-radius: 5px 0 0 5px;
-    margin-right: 0;
-    border: 0.5px solid #7d7d7d;
-  }
-
-  .count p {
-    border: 0.5px solid #7d7d7d;
-    margin: 0;
-    padding: 0.2em 0.4em;
-    background: #fefefe;
-    border-left: none;
-    border-right: none;
-  }
-
-  .count button.subtract {
-    border: 0.5px solid #7d7d7d;
-    padding: 0.2em 0.4em;
-    border-radius: 0 5px 5px 0;
-  }
-
-  .count button.remove {
-    display: flex;
-    align-content: center;
-    font-size: 0.6em;
-    background-color: #c91616;
-    color: white;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    margin-left: 10px;
-  }
-
-  .count button.remove object {
-    width: 20px;
-    height: 20px;
-  }
-
-  button > *:active,
-  button > *:focus {
+  button:focus {
     outline: none;
   }
 
-  .btn-group button {
-    background-color: #2a2a2a; /* Green background */
-    border: 1px solid green; /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: right; /* Float the buttons side by side */
-
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
   }
 
+  input {
+    transition: all 0.25s linear;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  input {
+    outline: none;
+  }
+
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    overflow: auto;
+  }
+
+  /* --- HEADER --- */
+  header.container {
+    margin-bottom: 1.5rem;
+  }
+
+  header .breadcrumb {
+    color: #7d7d7d;
+  }
+
+  header .breadcrumb li {
+    float: left;
+    padding: 0 6px;
+  }
+
+  header .breadcrumb li:first-child {
+    padding-left: 2px;
+  }
+
+  header .breadcrumb li:not(:last-child)::after {
+    content: " \276f";
+    padding-left: 8px;
+  }
+
+  header .count {
+    float: right;
+    color: #333333;
+  }
+
+  /* --- PRODUCT LIST --- */
+  .products {
+    border-top: 1px solid #ddd;
+  }
+
+  .products > li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .row {
+    position: relative;
+    overflow: auto;
+    width: 100%;
+  }
+
+  .col,
+  .quantity,
+  .remove {
+    float: left;
+  }
+
+  .col.left {
+    width: 70%;
+  }
+
+  .col.right {
+    width: 30%;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 30px);
+  }
+
+  .detail {
+    padding: 0 0.5rem;
+    line-height: 2.2rem;
+  }
+
+  .detail .name {
+    font-size: 1.2rem;
+  }
+
+  .detail .description {
+    color: #7d7d7d;
+    font-size: 1rem;
+  }
+
+  .detail .price {
+    font-size: 1.5rem;
+  }
+
+  .quantity,
+  .remove {
+    width: 50%;
+    text-align: center;
+  }
+
+  .remove svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .quantity > input {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: calc(50% - 30px);
+    background: #fff;
+    border: 2px solid #ddd;
+    color: #7f7f7f;
+    text-align: center;
+    font: 600 1.5rem Helvetica, Arial, sans-serif;
+  }
+
+  .quantity > input:hover,
+  .quantity > input:focus {
+    border-color: #f58551;
+  }
+
+  .close {
+    fill: #7d7d7d;
+    transition: color 150ms linear, background-color 150ms linear,
+      fill 150ms linear, 150ms opacity linear;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    fill: #f58551;
+  }
+
+  /* --- SUMMARY --- */
+  .promotion,
+  .summary,
+  .checkout {
+    float: left;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .promotion > label {
+    float: left;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .promotion > input {
+    float: left;
+    width: 80%;
+    font-size: 1rem;
+    padding: 0.5rem 0 0.5rem 1.8rem;
+    border: 2px solid #16cc9b;
+    border-radius: 2rem 0 0 2rem;
+  }
+
+  .promotion:hover > input {
+    border-color: #f58551;
+  }
+
+  .promotion > button {
+    float: left;
+    width: 20%;
+    padding: 0.5rem 0;
+    border-radius: 0 2rem 2rem 0;
+  }
+
+  .promotion:hover > button {
+    border-color: #f58551;
+    background-color: #f58551;
+  }
+
+  .promotion > button::after {
+    content: "\276f";
+    font-size: 1rem;
+  }
+
+  .summary {
+    font-size: 1.2rem;
+    text-align: right;
+  }
+
+  .summary ul li {
+    padding: 0.5rem 0;
+  }
+
+  .summary ul li span {
+    display: inline-block;
+    width: 30%;
+  }
+
+  .summary ul li.total {
+    font-weight: bold;
+  }
+
+  .checkout {
+    text-align: right;
+  }
+
+  .checkout > button {
+    font-size: 1.2rem;
+    padding: 0.8rem 2.8rem;
+    border-radius: 1.5rem;
+  }
+
+  .empty-product {
+    text-align: center;
+  }
+
+  .empty-product > button {
+    font-size: 1.3rem;
+    padding: 10px 30px;
+    border-radius: 5px;
+  }
+
+  /* --- SMALL SCREEN --- */
+  @media all and (max-width: 599px) {
+    .thumbnail img {
+      display: none;
+    }
+
+    .quantity > input {
+      width: 40px;
+      height: 40px;
+      left: calc(50% - 20px);
+    }
+
+    .remove svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  /* --- MEDIUM & LARGE SCREEN --- */
+  @media all and (min-width: 600px) {
+    html {
+      font-size: 14px;
+    }
+
+    .container {
+      width: 75%;
+      max-width: 960px;
+    }
+
+    .thumbnail,
+    .detail {
+      float: left;
+    }
+
+    .thumbnail {
+      width: 35%;
+    }
+
+    .detail {
+      width: 65%;
+    }
+
+    .promotion,
+    .summary {
+      width: 50%;
+    }
+
+    .checkout {
+      width: 100%;
+    }
+
+    .checkout,
+    .summary {
+      text-align: right;
+    }
+  }
+
+  /* --- LARGE SCREEN --- */
+  @media all and (min-width: 992px) {
+    html {
+      font-size: 16px;
+    }
+  }
   .btn-left button {
     background-color: #689c54; /* Green background */
     border: 1px solid green; /* Green border */
@@ -316,7 +526,6 @@
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
-
   }
 
   .btn-group button:not(:last-child) {
@@ -332,7 +541,7 @@
 
   /* Add a background color on hover */
   .btn-group button:hover {
-    background-color:#a0c492;
+    background-color: #a0c492;
   }
 
   @media screen and (max-width: 1048px) {

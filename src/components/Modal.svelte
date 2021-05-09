@@ -34,13 +34,14 @@
     height: 100%;
     top: 0;
     left: 0;
+  display: flexbox;
   }
 
   .modal {
     background-color: white;
     max-width: 80vw;
-    padding: 1rem;
-    margin: 15% auto;
+    margin: auto;
+  padding: 20px;
   }
   .close {
     float: right;
