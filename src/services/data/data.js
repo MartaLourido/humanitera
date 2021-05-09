@@ -26,5 +26,5 @@ export const PRODUCTS = [
 ]
 
 export const VALID_COUPONS  = [
-	{ code: 'FIRSTIME', discountType: 'SEK', value: 10 }
+	{ code: 'FIRSTIME', discountType: 'SEK', value: 500 }
 ]

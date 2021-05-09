@@ -2,7 +2,10 @@
   import { cartStore, costStore, validCouponStore } from "./stores";
   import Modal from "./Modal.svelte";
   import Button from "./Button.svelte";
+  import InputQuantity from "./InputQuantity.svelte";
+  import Counter from "./Counter.svelte";
   let modal;
+
 
   let shown = false;
   export function show() {
@@ -30,14 +33,6 @@
     cartStore.removeCoupon(coupon);
   };
 
-  const countButtonHandler = (e) => {
-    if (e.target.classList.contains("add")) {
-      count++;
-    } else if (count >= 1) {
-      count--;
-    }
-    $cartStore.totalItems;
-  };
 
 
 </script>
@@ -47,42 +42,54 @@
 >
 
 <Modal bind:this={modal}>
-  <div class="title">
+  <div class="Container">
     <h2>Your Shopping Cart</h2>
   </div>
   {#if show}
     {#if $cartStore.items.length}
       {#each $cartStore.items as item (item.id)}
-	  <div class="Cart">
-        <div class="image">
-          <img class="item-1.png" src={item.image} alt="Product" />
-        </div>
-        <div class="content-product">
-          <span class="product-name"><strong>{item.name}</strong></span>
-          <span class="product-name"><strong>Size {item.size}</strong></span>
+	  <div class="btn-left">
+		<p>product</p>
+	  </div>
+	  <div class='container'>
+		
+			  <img class="item-1.png" src={item.image} alt="Product" />
+			<div class="btn-group">
+			  <span class="product-name"><strong>{item.name}</strong></span>
+			  <span class="product-name"><strong>Size {item.size}</strong></span>
+			 
+			  <span class="right">Price {item.price} SEK </span>
+		<span class="separator-top" />
+		<button class="remove" on:click={removeToCart(item)}>
+			<object
+			  aria-label="remove"
+			  type="image/svg+xml"
+			  data="img/svg/cancel.svg"
+			/>
+			Remove
+		  </button>
+	</div>
+	
+	 
           <span class="product-price">{item.price} SEK</span>
-          <span class="separator-top" />
-
-          <div class="count">
+         
+		  <Counter bind:count={item.count} />
+          <!-- <div class="count">
             <button class="add" on:click={countButtonHandler}>+</button>
             <p>{item.count}</p>
-            <button class="subtract" on:click={countButtonHandler}>-</button>
-            <button class="remove" on:click={removeToCart(item)}>
-              <object
-                aria-label="remove"
-                type="image/svg+xml"
-                data="img/svg/cancel.svg"
-              />
-              Remove
-            </button>
-          </div>
+			<InputQuantity
+			{quantity}
+			on:addQuantity={addQuantity}
+			on:removeQuantity={removeQuantity} /> -->
+         
+
           <small style="display: block;"
             >(x{$cartStore.quantities[item.id]}) -
             <strong>SEK{$cartStore.quantities[item.id] * item.price}</strong
             ></small
           >
         </div>
-	</div>
+
       {/each}
       <hr />
       <div>
@@ -143,11 +150,40 @@
 
 <!-- <button class="myButton" on:click={toggleDropdown}>Cart ({$cartStore.totalItems})</button> -->
 <style>
+
+.container {
+   text-align:center;
+} 
+ button {
+     display:inline-block;
+}
+
+
+
+    li {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        border-bottom: .1em solid #cacaca;
+        padding: .8em 0;
+    }
+    h4 {
+        text-align: center;
+        width: 100%;
+    }
+    span {
+        width: 100%;
+        text-align: right;
+        font-size: .95em;
+    }
+
   img {
     width: 80px;
     border-radius: 10px;
     border: 1px solid #ccc;
     padding: 0.5em;
+	float: left;
   }
 
   .content-product {

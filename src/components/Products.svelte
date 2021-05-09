@@ -15,6 +15,7 @@
   const addToCart = (product) => {
     cartStore.addItem(product);
   };
+  
 </script>
 
 {#if products.length}
