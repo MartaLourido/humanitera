@@ -4,6 +4,7 @@
   import Button from "./Button.svelte";
   import InputQuantity from "./InputQuantity.svelte";
   import Counter from "./Counter.svelte";
+
   let modal;
 
   let shown = false;
@@ -114,7 +115,7 @@
 			on:addQuantity={addQuantity}
 			on:removeQuantity={removeQuantity} /> -->
       {/each}
-      <hr />
+    
 
       <div class="container">
         <span>Sub-Total</span><strong>SEK{$costStore.subTotal}</strong>

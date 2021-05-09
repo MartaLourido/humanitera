@@ -12,6 +12,7 @@
     padding: 40px;
     text-align: center;
     background-color: #83b271;
+    
   }
   .copyright {
     color: whitesmoke;

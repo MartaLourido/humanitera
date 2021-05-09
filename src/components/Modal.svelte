@@ -1,53 +1,54 @@
 <script>
-  let shown = false;
-  export function show() {
-    shown = true;
-  }
-  export function hide() {
-    shown = false;
-  }
-</script>
-
-<svelte:window
-  on:keydown={(e) => {
+    let shown = false;
+    export function show() {
+      shown = true;
+    }
+    export function hide() {
+      shown = false;
+    }
+  </script>
+  
+  <svelte:window
+  on:keydown={e => {
     if (e.keyCode == 27) {
       hide();
     }
-  }}
-/>
-
-{#if shown}
-  <div class="modal-wrapper">
-    <div class="modal">
-      <span class="close" on:click={() => hide()}>&times;</span>
-      <slot />
-    </div>
-  </div>
-{/if}
-
-<style>
-  .modal-wrapper {
-    background-color: rgb(0, 0, 0);
+  }} />
+  
+  <style>
+    .modal-wrapper {
+      background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.6);
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-  display: flexbox;
-  }
-
-  .modal {
-    background-color: white;
+    }
+  
+    .modal {
+      background-color: white;
     max-width: 80vw;
-    margin: auto;
-  padding: 20px;
-  }
-  .close {
-    float: right;
-    cursor: pointer;
-  }
-  .close:hover {
-    font-weight: bold;
-  }
-</style>
+    padding: 1rem;
+    margin: 15% auto;
+    }
+    .close {
+      float: right;
+      cursor: pointer;
+    }
+    .close:hover {
+      font-weight: bold;
+    }
+  </style>
+  
+
+  
+  {#if shown}
+    <div class="modal-wrapper">
+      <div class="modal">
+        <span class="close" on:click={() => hide()}>&times;</span>
+        <slot />
+      </div>
+    </div>
+  {/if}
+  
