@@ -9,7 +9,6 @@
     shown = true;
   }
 
-  let isOpened = false;
   let couponInput = null;
 
   const removeToCart = (product) => {
@@ -39,6 +38,8 @@
     }
     $cartStore.totalItems;
   };
+
+
 </script>
 
 <Button on:click={() => modal.show()}
@@ -102,7 +103,7 @@
             {/each}
           </ul>
         {/if}
-        <div class="cart__coupon">
+
           <input
             class="cart__coupon__input"
             type="text"
@@ -112,7 +113,7 @@
           <button class="cart__coupon__btn" type="button" on:click={applyCoupon}
             >Apply</button
           >
-        </div>
+
         <hr />
         <div class="cart__total">
           <span>Total</span><strong>SEK{$costStore.total}</strong>
@@ -123,7 +124,7 @@
 	  <button on:click={() => modal.hide()}>Checkout</button>
 	</div>
       <div class="btn-group">
-        <Button on:click={() => modal.hide()}>Continue Shopping</button>
+        <button on:click={() => modal.hide()}>Continue Shopping</button>
 	</div>
 
     {:else}
@@ -172,12 +173,13 @@
   }
 
   .Cart {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+	display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
     width: 100%;
-    height: 100%;
   }
 
   h3 {
@@ -262,7 +264,7 @@
   }
 
   .btn-group button {
-    background-color: #04aa6d; /* Green background */
+    background-color: #2a2a2a; /* Green background */
     border: 1px solid green; /* Green border */
     color: white; /* White text */
     padding: 10px 24px; /* Some padding */
@@ -272,7 +274,7 @@
   }
 
   .btn-left button {
-    background-color: #04aa6d; /* Green background */
+    background-color: #689c54; /* Green background */
     border: 1px solid green; /* Green border */
     color: white; /* White text */
     padding: 10px 24px; /* Some padding */
@@ -294,7 +296,7 @@
 
   /* Add a background color on hover */
   .btn-group button:hover {
-    background-color: #3e8e41;
+    background-color:#a0c492;
   }
 
   @media screen and (max-width: 1048px) {
