@@ -11,8 +11,6 @@ export const productStore = readable([], async (set) => {
   return () => {};
 });
 
-
-
 export const validCouponStore = readable([], async (set) => {
   set(
     await new Promise((resolve, _reject) => {
