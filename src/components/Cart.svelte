@@ -32,6 +32,8 @@
   const unapplyCoupon = (coupon) => {
     cartStore.removeCoupon(coupon);
   };
+
+  
 </script>
 
 <Button on:click={() => modal.show()}
@@ -81,12 +83,13 @@
                 <!-- <span class="separator-top" /> -->
                 <div class="col right">
                   <div class="quantity">
-                    <input
+                    <!-- <input
                       type="text"
                       class="quantity"
                       step="1"
                       value={item.quantity}
-                    />
+                    /> -->
+					<Counter bind:count={item.count}  value={item.quantity}/>
                   </div>
                   <div class="remove">
                     <button class="remove" on:click={removeToCart(item)}>

@@ -91,6 +91,7 @@ export const cartStore = (() => {
         quantities,
         totalItems,
       };
+	  
     });
   };
 
