@@ -2,9 +2,6 @@
 	import { cartStore, costStore, validCouponStore } from "./stores";
 	import Modal from "./Modal.svelte";
 	import Button from "./Button.svelte";
-	import InputQuantity from "./InputQuantity.svelte";
-	import Counter from "./Counter.svelte";
-  
 	let modal;
   
 	let shown = false;
@@ -71,7 +68,7 @@
 						Price <small style="display: block;"
 						  >(x{$cartStore.quantities[item.id]}) -
 						  <strong
-							>SEK {$cartStore.quantities[item.id] *
+							> SEK {$cartStore.quantities[item.id] *
 							  item.price}</strong
 						  ></small
 						>
@@ -104,27 +101,16 @@
 			  </li>
 			</ul>
 		  </section>
-  
-		  <!-- <span class="product-price">{item.price} SEK</span> -->
-  
-		  <!-- <Counter bind:count={item.count} /> -->
-		  <!-- <div class="count">
-			  <button class="add" on:click={countButtonHandler}>+</button>
-			  <p>{item.count}</p>
-			  <InputQuantity
-			  {quantity}
-			  on:addQuantity={addQuantity}
-			  on:removeQuantity={removeQuantity} /> -->
 		{/each}
 	  
   
 		<div class="container">
-		  <span>Sub-Total</span><strong>SEK{$costStore.subTotal}</strong>
+		  <span>SubTotal</span>{" "}<strong>SEK {$costStore.subTotal}</strong>
   
-		  <p>Have A Promo Code??</p>
+		  <p>Do you have a promo code?</p>
 		  <span>Use the code "FIRSTIME" to get a discount as a first time user</span>
 		  <br>
-		  <span>Discount</span><strong>-SEK{$costStore.discountAmount}</strong>
+		  <span>Discount</span>{" "}<strong>SEK {$costStore.discountAmount}</strong>
   
 		  {#if $cartStore.coupons.length}
 			<ul class="cart__coupons-list">
@@ -144,7 +130,7 @@
   
 		  <hr />
 		  <div class="cart__total">
-			<span>Total</span><strong>SEK{$costStore.total}</strong>
+			<span>Total</span>{" "}<strong>SEK {$costStore.total}</strong>
 		  </div>
   
 		  <div class="checkout">
