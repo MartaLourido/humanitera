@@ -1,6 +1,6 @@
 <script>
   import { onDestroy } from "svelte";
-  import { productStore, cartStore } from "./stores";
+  import { productStore, cartStore } from ".../stores";
 
   let products = [];
 
@@ -15,7 +15,6 @@
   const addToCart = (product) => {
     cartStore.addItem(product);
   };
-  
 </script>
 
 {#if products.length}
@@ -91,6 +90,4 @@
     font-size: 1.5em;
     letter-spacing: 1px;
   }
-
-  
 </style>

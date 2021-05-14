@@ -1,7 +1,7 @@
 <script>
   import { cartStore, costStore, validCouponStore } from "./stores";
-  import Modal from "./Modal.svelte";
-  import Button from "./Button.svelte";
+  import Modal from "./ShoppingCart/Modal.svelte";
+  import Button from "./GeneralComponents/Button.svelte";
   let modal;
 
   let shown = false;
@@ -27,12 +27,13 @@
   };
 
   const unapplyCoupon = (coupon) => {
+    human;
     cartStore.removeCoupon(coupon);
   };
 </script>
 
-<Button on:click={() => modal.show()}
-  >Shopping Cart ({$cartStore.totalItems})</Button
+<button on:click={() => modal.show()}
+  >Shopping Cart ({$cartStore.totalItems})</button
 >
 
 <Modal bind:this={modal}>
@@ -50,7 +51,6 @@
             <span class="count">({$cartStore.totalItems})items in the bag</span>
           </ul>
         </header>
-
         <section class="container">
           <ul class="products">
             <li class="row">
@@ -136,7 +136,7 @@
         </div>
 
         <div class="checkout">
-          <button type="button">Check Out</button>
+          <button on:click={() => modal.hide()}>Check Out</button>
         </div>
       </div>
 
@@ -155,36 +155,15 @@
   {/if}
 </Modal>
 
-<!-- <button class="myButton" on:click={toggleDropdown}>Cart ({$cartStore.totalItems})</button> -->
 <style>
   * {
     box-sizing: border-box;
-  }
-
-  html {
-    font-size: 12px;
-  }
-
-  body {
-    margin: 20px 0;
-    padding: 0;
-    font-family: arial, sans-serif;
-    overflow: scroll;
   }
 
   img {
     max-width: 100%;
     vertical-align: middle;
     border-radius: 4px;
-  }
-
-  a {
-    text-decoration: none;
-    color: #333333;
-  }
-
-  a:hover {
-    color: #f58551;
   }
 
   button {
@@ -225,14 +204,6 @@
 
   input {
     transition: all 0.25s linear;
-  }
-
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0;
   }
 
   input {
@@ -330,11 +301,6 @@
     text-align: center;
   }
 
-  .remove svg {
-    width: 60px;
-    height: 60px;
-  }
-
   .quantity > input {
     display: inline-block;
     width: 60px;
@@ -343,76 +309,17 @@
     left: calc(50% - 30px);
     background: #fff;
     border: 2px solid #ddd;
-    color: #7f7f7f;
+    color: #a0c492;
     text-align: center;
     font: 600 1.5rem Helvetica, Arial, sans-serif;
   }
 
   .quantity > input:hover,
   .quantity > input:focus {
-    border-color: #f58551;
-  }
-
-  .close {
-    fill: #7d7d7d;
-    transition: color 150ms linear, background-color 150ms linear,
-      fill 150ms linear, 150ms opacity linear;
-    cursor: pointer;
-  }
-
-  .close:hover {
-    fill: #f58551;
+    border-color: #a0c492;
   }
 
   /* --- SUMMARY --- */
-  .promotion,
-  .summary,
-  .checkout {
-    float: left;
-    width: 100%;
-    margin-top: 1.5rem;
-  }
-
-  .promotion > label {
-    float: left;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .promotion > input {
-    float: left;
-    width: 80%;
-    font-size: 1rem;
-    padding: 0.5rem 0 0.5rem 1.8rem;
-    border: 2px solid #16cc9b;
-    border-radius: 2rem 0 0 2rem;
-  }
-
-  .promotion:hover > input {
-    border-color: #f58551;
-  }
-
-  .promotion > button {
-    float: left;
-    width: 20%;
-    padding: 0.5rem 0;
-    border-radius: 0 2rem 2rem 0;
-  }
-
-  .promotion:hover > button {
-    border-color: #f58551;
-    background-color: #f58551;
-  }
-
-  .promotion > button::after {
-    content: "\276f";
-    font-size: 1rem;
-  }
-
-  .summary {
-    font-size: 1.2rem;
-    text-align: right;
-  }
 
   .summary ul li {
     padding: 0.5rem 0;
@@ -421,10 +328,6 @@
   .summary ul li span {
     display: inline-block;
     width: 30%;
-  }
-
-  .summary ul li.total {
-    font-weight: bold;
   }
 
   .checkout {
@@ -437,16 +340,6 @@
     border-radius: 1.5rem;
   }
 
-  .empty-product {
-    text-align: center;
-  }
-
-  .empty-product > button {
-    font-size: 1.3rem;
-    padding: 10px 30px;
-    border-radius: 5px;
-  }
-
   /* --- SMALL SCREEN --- */
   @media all and (max-width: 599px) {
     .thumbnail img {
@@ -457,20 +350,12 @@
       width: 40px;
       height: 40px;
       left: calc(50% - 20px);
-    }
-
-    .remove svg {
-      width: 40px;
-      height: 40px;
+      color: #a0c492;
     }
   }
 
   /* --- MEDIUM & LARGE SCREEN --- */
   @media all and (min-width: 600px) {
-    html {
-      font-size: 14px;
-    }
-
     .container {
       width: 75%;
       max-width: 960px;
@@ -489,34 +374,17 @@
       width: 65%;
     }
 
-    .promotion,
-    .summary {
-      width: 50%;
-    }
-
     .checkout {
       width: 100%;
     }
 
-    .checkout,
-    .summary {
+    .checkout {
       text-align: right;
     }
   }
 
   /* --- LARGE SCREEN --- */
   @media all and (min-width: 992px) {
-    html {
-      font-size: 16px;
-    }
-  }
-  .btn-left button {
-    background-color: #689c54; /* Green background */
-    border: 1px solid green; /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
   }
 
   .btn-group button:not(:last-child) {
