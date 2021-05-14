@@ -1,5 +1,5 @@
 import { writable, readable, derived } from "svelte/store";
-import { PRODUCTS, VALID_COUPONS } from "../services/data/data";
+import { PRODUCTS, VALID_COUPONS } from "./data/data";
 
 export const productStore = readable([], async (set) => {
   set(
@@ -91,7 +91,6 @@ export const cartStore = (() => {
         quantities,
         totalItems,
       };
-	  
     });
   };
 

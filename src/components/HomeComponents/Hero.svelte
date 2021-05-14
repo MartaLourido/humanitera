@@ -1,18 +1,15 @@
 <script>
   let bgImage =
     "https://cdn.shopify.com/s/files/1/1132/3434/files/BedrockSandals_MT20_Bydlon_072520-1040449_1_1600x.jpg?v=1614191359";
-  import Button from "./Button.svelte";
+  import Button from "../GeneralComponents/Button.svelte";
 </script>
 
 <div style="background-image: url('{bgImage}')">
-  <!-- <div class="transbox">
-    <h1>
-      Sustainable footwear for everyone, enjoy nature with comfortable footwear
-      made from recycled materials.
-    </h1>
-  </div> -->
   <Button>
-    <a href="#the-products">Shop <em>now</em> </a></Button
+    <a href="#the-products">
+      Sustainable footwear for everyone Join the change, shop
+      <em>now</em>
+    </a></Button
   >
 </div>
 
@@ -25,15 +22,6 @@
     justify-content: center;
     align-items: center;
   }
-  /* div.transbox {
-    margin: 30px;
-    background-color: #ffffff;
-    border: 1px solid black;
-    opacity: 0.6;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-  } */
   @font-face {
     font-family: "Gelasio";
     font-style: normal;
