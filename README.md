@@ -6,9 +6,29 @@ Humanitera is a small e-commerce made with svelte, HTML & CSS where you can buy 
 
 ## Project Information
 
-In this project, users can search for their packages by id in a navigation bar and can also filter them with different filters. 
-They can also see a map with the location of the package for a clearer detail of where to find it and when it will arrive with all the information extracted from the API.
-The project is made to be responsive. 
+Humanitera is a different concept shop where users can buy sustainable footwear made from recycled materials.
+The website is responsive and has a shopping cart modal where users can insert discount codes and get a discount for their first order. 
+
+## Preview
+
+
+## Home Page- computer version
+![preview1](src/images/preview_desktop1.png)
+
+## Products - computer version
+![preview1](src/images/preview_desktop2.png)
+
+## Shopping Cart - computer version
+![preview1](src/images/preview_desktop3.png)
+
+## Home Page - mobile version
+![preview1](src/images/preview_phone1.png)
+
+##  Products  - mobile version
+![preview1](src/images/preview_phone2.png)
+
+## Shopping Cart - mobile version
+![preview1](src/images/preview_phone3.png)
 
 ## Installation and Setup Instructions
 
@@ -41,7 +61,7 @@ If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommen
 
 ### Improvements
 
-The project will be further improved by adding more functionalities to the modal and adding testing with jest
+The project will be further improved by adding more functionalities to the modal and adding testing with jest.
 
 ## About me
 
