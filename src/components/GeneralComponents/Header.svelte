@@ -18,11 +18,9 @@
     justify-content: space-between;
     padding: 1em;
   }
-
   .logo {
     max-width: 150px;
   }
-
   .header__nav__list {
     list-style: none;
     display: flex;
@@ -32,7 +30,6 @@
     justify-content: flex-end;
     padding: 0 1rem;
   }
-
   .header__nav__list__item:not(:last-child) {
     margin-right: 1rem;
   }
