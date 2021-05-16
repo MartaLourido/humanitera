@@ -20,7 +20,7 @@
   }
 
   .logo {
-    max-width: 500px;
+    max-width: 150px;
   }
 
   .header__nav__list {
