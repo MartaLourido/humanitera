@@ -29,33 +29,6 @@
   const unapplyCoupon = (coupon) => {
     cartStore.removeCoupon(coupon);
   };
-
-  const minusItem = (product) => {
-		for(let item of cart) {
-				if(item.id === product.id) {
-					if(product.quantity > 1 ) {
-							product.quantity -= 1
-							cart = cart
-					} else {
-							cart = cart.filter((cartItem) => cartItem != product)
-					}
-					return;
-				}
-		}
-	}
-
-  const plusItem = (product) => {
-		for(let item of cart) {
-			if(item.id === product.id) {
-				item.quantity += 1
-				cart = cart;
-				return;
-			}
-		}
-	}
-
-
-
 </script>
 
 <button on:click={() => modal.show()}
@@ -159,7 +132,6 @@
         <div class="cart__total">
           <span>Total</span>{" "}<strong>SEK {$costStore.total}</strong>
         </div>
-        
 
         <div class="checkout">
           <button on:click={() => modal.hide()}>Check Out</button>
