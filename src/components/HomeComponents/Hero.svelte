@@ -5,9 +5,9 @@
 </script>
 
 <div style="background-image: url('{bgImage}')">
+  <p>Sustainable footwear for everyone</p> {" "}
   <Button>
     <a href="#the-products">
-     <span>Sustainable footwear</span> {" "}
       Join the change
       Shop
       <em>now</em>
@@ -34,5 +34,18 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
       U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
       U+2215, U+FEFF, U+FFFD;
+  }
+
+  p{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 19px;
+letter-spacing: 1.6px;
+word-spacing: -2.2px;
+color: #000000;
+font-weight: normal;
+text-decoration: overline solid rgb(68, 68, 68);
+font-style: normal;
+font-variant: small-caps;
+text-transform: capitalize;
   }
 </style>
