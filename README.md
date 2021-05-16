@@ -2,7 +2,7 @@
 
 ![logo](src/images/logo.png)
 
-Humanitera is a small e-commerce made with svelte, HTML & CSS where you can buy sustainable shoes.
+Humanitera is a small e-commerce made with Svelte, JavaScript, HTML & CSS where you can buy sustainable shoes.
 
 ## Project Information
 
@@ -30,6 +30,9 @@ The website is responsive and has a shopping cart modal where users can insert d
 ## Shopping Cart - mobile version
 ![preview1](src/images/preview_phone3.png)
 
+## Theme Colors 
+![preview1](src/images/theme_colors.png)
+
 ## Installation and Setup Instructions
 
 Install the dependencies...
@@ -54,9 +57,10 @@ If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommen
 
 ### Build with
 
-    - Svelte 
     - HTML
     - CSS
+    - JavaScript
+    - Svelte 
 
 
 ### Improvements

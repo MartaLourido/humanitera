@@ -7,7 +7,9 @@
 <div style="background-image: url('{bgImage}')">
   <Button>
     <a href="#the-products">
-      Sustainable footwear for everyone Join the change, shop
+     <span>Sustainable footwear</span> {" "}
+      Join the change
+      Shop
       <em>now</em>
     </a></Button
   >

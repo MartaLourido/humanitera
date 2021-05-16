@@ -1,6 +1,6 @@
 <script>
   import { onDestroy } from "svelte";
-  import { productStore, cartStore } from ".../stores";
+  import { productStore, cartStore } from "./Stores.js";
 
   let products = [];
 

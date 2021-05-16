@@ -1,5 +1,5 @@
 import { writable, readable, derived } from "svelte/store";
-import { PRODUCTS, VALID_COUPONS } from "./data/data";
+import { PRODUCTS, VALID_COUPONS } from  "./Data/data";
 
 export const productStore = readable([], async (set) => {
   set(
