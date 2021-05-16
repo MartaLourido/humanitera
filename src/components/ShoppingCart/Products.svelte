@@ -33,7 +33,6 @@
           SEK
           <span>{product.price}</span>
         </p>
-
         <button class="myButton" type="button" on:click={addToCart(product)}
           >Add to Cart</button
         >
@@ -84,7 +83,6 @@
     margin: 4;
     padding: 4;
   }
-
   h1 {
     font-family: "Ubuntu", sans-serif;
     font-size: 1.5em;

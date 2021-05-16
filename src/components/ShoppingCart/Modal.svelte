@@ -35,7 +35,6 @@
     top: 0;
     left: 0;
   }
-
   .modal {
     background-color: white;
     max-width: 80vw;
