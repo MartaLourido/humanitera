@@ -74,7 +74,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <span class="separator-top" /> -->
                 <div class="col right">
                   <div class="quantity">
                     <input

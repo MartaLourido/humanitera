@@ -1,9 +1,7 @@
 <footer>
   <div class="copyright">© Copyright 2021 Humanitera</div>
   <div class="email">
-    <a href="mailto:hello@humanitera.se" class="footer__link"
-      >hello@humanitera.se</a
-    >
+    <a href="mailto:hello@humanitera.se" class="footer__link">hello@humanitera.se</a>
   </div>
 </footer>
 
