@@ -23,7 +23,6 @@
       max-width: none;
     }
   }
-
   @media (min-width: 800px) {
     :root {
       --fs-h1: 4.5rem;
