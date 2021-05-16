@@ -1,6 +1,6 @@
 <script>
   export let src = "https://www.linkpicture.com/q/logo_219.png";
-  import Cart from "../Cart.svelte";
+  import Cart from "../ShoppingCart/Cart.svelte";
 </script>
 
 <header>
@@ -20,7 +20,7 @@
   }
 
   .logo {
-    max-width: 500px;
+    max-width: 150px;
   }
 
   .header__nav__list {

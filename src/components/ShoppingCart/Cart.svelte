@@ -1,7 +1,7 @@
 <script>
-  import { cartStore, costStore, validCouponStore } from "./stores";
-  import Modal from "./ShoppingCart/Modal.svelte";
-  import Button from "./GeneralComponents/Button.svelte";
+  import { cartStore, costStore, validCouponStore } from "./Stores";
+  import Modal from "./Modal.svelte";
+  import Button from "../GeneralComponents/Button.svelte";
   let modal;
 
   let shown = false;
@@ -27,9 +27,9 @@
   };
 
   const unapplyCoupon = (coupon) => {
-    human;
     cartStore.removeCoupon(coupon);
   };
+
 </script>
 
 <button on:click={() => modal.show()}
@@ -119,7 +119,6 @@
             {#each $cartStore.coupons as coupon (coupon.code)}
               <li class="cart__coupons-list__item">
                 <span>{coupon.code}</span>
-
                 <button type="button" on:click={unapplyCoupon(coupon)}>x</button
                 >
               </li>
