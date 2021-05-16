@@ -1,5 +1,5 @@
 import { writable, readable, derived } from "svelte/store";
-import { PRODUCTS, VALID_COUPONS } from  "./Data/data";
+import { PRODUCTS, COUPONS } from  "./Data/data";
 
 export const productStore = readable([], async (set) => {
   set(
@@ -14,7 +14,7 @@ export const productStore = readable([], async (set) => {
 export const validCouponStore = readable([], async (set) => {
   set(
     await new Promise((resolve, _reject) => {
-      resolve(VALID_COUPONS);
+      resolve(COUPONS);
     })
   );
 
