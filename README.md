@@ -13,7 +13,7 @@ The website is responsive and has a shopping cart modal where users can insert d
 
 
 ## Home Page- computer version
-![preview1](src/images/preview_desktop1.png)
+![preview1](src/images/preview_desktop5.png)
 
 ## Products - computer version
 ![preview1](src/images/preview_desktop2.png)
@@ -22,7 +22,7 @@ The website is responsive and has a shopping cart modal where users can insert d
 ![preview1](src/images/preview_desktop3.png)
 
 ## Home Page - mobile version
-![preview1](src/images/preview_phone1.png)
+![preview1](src/images/preview_phone5.png)
 
 ##  Products  - mobile version
 ![preview1](src/images/preview_phone2.png)

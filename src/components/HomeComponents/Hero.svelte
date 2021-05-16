@@ -5,11 +5,11 @@
 </script>
 
 <div style="background-image: url('{bgImage}')">
-  <p>Sustainable footwear for everyone</p> {" "}
+  <p>Sustainable footwear for everyone</p>
+  {" "}
   <Button>
     <a href="#the-products">
-      Join the change
-      Shop
+      Join the change Shop
       <em>now</em>
     </a></Button
   >
@@ -36,16 +36,16 @@
       U+2215, U+FEFF, U+FFFD;
   }
 
-  p{
+  p {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-font-size: 19px;
-letter-spacing: 1.6px;
-word-spacing: -2.2px;
-color: #000000;
-font-weight: normal;
-text-decoration: overline solid rgb(68, 68, 68);
-font-style: normal;
-font-variant: small-caps;
-text-transform: capitalize;
+    font-size: 19px;
+    letter-spacing: 1.6px;
+    word-spacing: -2.2px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: overline solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: capitalize;
   }
 </style>
